@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+    int i, j;
+
+    // Abre o arquivo para escrita
+    file = fopen("tabuadas.txt", "w");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return 1;
+    }
+
+    // Gera as tabuadas do 2 ao 9
+    for (i = 2; i <= 9; i++) {
+        fprintf(file, "Tabuada do %d:\n", i);
+        for (j = 1; j <= 10; j++) {
+            fprintf(file, "%d x %d = %d\n", i, j, i * j);
+        }
+        fprintf(file, "\n"); // Adiciona uma linha em branco entre as tabuadas
+    }
+
+    // Fecha o arquivo
+    fclose(file);
+
+    printf("Arquivo tabuadas.txt gerado com sucesso!\n");
+
+    return 0;
+}
